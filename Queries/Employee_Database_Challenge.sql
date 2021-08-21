@@ -42,4 +42,15 @@ INNER JOIN titles AS ti
 ON (e.emp_no=ti.emp_no)
 WHERE (de.to_date = '9999-01-01')
 AND (e.birth_date BETWEEN '1965-01-01'AND '1965-12-31')
-ORDER BY e.emp_no ASC;
+ORDER BY e.emp_no DESC;
+--Provide Mentorship Title Count
+SELECT (me.emp_no),
+	me.first_name,
+	me.last_name,
+	me.title
+FROM mentorship_eligibility as me
+ORDER BY me.emp_no, me.to_date DESC;
+SELECT COUNT (me.title), me.title
+FROM mentorship_eligibility AS me
+GROUP BY me.title
+ORDER BY COUNT(me.title) DESC;
